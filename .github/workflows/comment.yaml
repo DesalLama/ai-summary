@@ -14,7 +14,7 @@ on:
 
 jobs:
   summarize:
-    if: "${{ github.event.workflow_run.conclusion == 'success' }} && !contains(github.event.pull_request.title, '(sync-branches)') && !startsWith(github.head_ref, 'renovate/')"
+    if: "github.event.workflow_run.conclusion == 'success' && !contains(github.event.pull_request.title, '(sync-branches)') && !startsWith(github.head_ref, 'renovate/')"
     timeout-minutes: 30
     runs-on: ubuntu-latest
 
