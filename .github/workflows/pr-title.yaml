@@ -1,0 +1,14 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+jobs:
+  summarize:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: summarize script
+        run: |
+          echo "pr-title"
