@@ -1,24 +1,25 @@
-# .github/workflows/ai-summarize.yml
-
 name: ai summarize
 
 on:
   pull_request:
-  push:
-    branches:
-      - development
 
 jobs:
   summarize:
     if: |
-        github.event_name == 'pull_request' &&
-        github.base_ref == 'development' &&
-        github.head_ref != 'e2e' &&
-        github.head_ref != 'main'
-    timeout-minutes: 30
+      github.base_ref == 'development' &&
+      github.head_ref != 'e2e' &&
+      github.head_ref != 'main' &&
+      github.head_ref != 'development'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
+      - name: Debug Info
+        run: |
+          echo "event_name: ${{ github.event_name }}"
+          echo "base_ref: ${{ github.base_ref }}"
+          echo "head_ref: ${{ github.head_ref }}"
+
       - name: summarize script
         run: |
           echo "AI Summary"
