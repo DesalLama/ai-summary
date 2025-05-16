@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: summarize script
         run: |
-          echo "pr-title"
+          eeeecho "pr-title"
